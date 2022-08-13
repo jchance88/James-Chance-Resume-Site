@@ -1,6 +1,9 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import space from "./space.jpeg";
+import PortfolioPicture from "./PortfolioPicture.jpeg";
+import moon_picture from "./moon_picture.jpeg";
 
 const scene = new THREE.Scene();
 const loader = new THREE.TextureLoader();
@@ -12,7 +15,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const renderer = new THREE.WebGL1Renderer({
-  canvas: document.querySelector("#bg"),
+  canvas: document.querySelector("#bg")!,
 });
 
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -52,15 +55,15 @@ function addStar() {
   const star = new THREE.Mesh(geometry, material);
 
   const [x, y, z] = Array(3)
-    .fill()
+    .fill(undefined)
     .map(() => THREE.MathUtils.randFloatSpread(100));
 
   star.position.set(x, y, z);
   scene.add(star);
 }
 
-Array(200).fill().forEach(addStar);
+Array(200).fill(undefined).forEach(addStar);
 
-scene.background = loader.load("space.jpeg");
+scene.background = loader.load(space);
 
 animate();
