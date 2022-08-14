@@ -30,9 +30,6 @@ function addStar() {
 
 function animate() {
   requestAnimationFrame(animate);
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.01;
-  torus.rotation.z += 0.01;
   moon.rotation.y += 0.01;
   portraitBox.rotation.y += 0.01;
 
@@ -57,13 +54,6 @@ const ambientLight = new THREE.AmbientLight(0xffffff);
 const renderer = new THREE.WebGL1Renderer({
   canvas: document.querySelector("#bg")!,
 });
-
-// Toro
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({
-  color: 0xff6346,
-});
-const torus = new THREE.Mesh(geometry, material);
 
 //Portrait Box
 
@@ -93,14 +83,13 @@ camera.position.setX(-3);
 
 //Scene adds
 
-scene.add(torus);
 scene.add(portraitBox);
 scene.add(moon);
 scene.add(ambientLight, pointLight);
 
 //Scence background set
 
-scene.background = loader.load(space);
+//scene.background = loader.load(space);
 
 //position set
 
